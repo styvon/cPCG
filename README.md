@@ -42,6 +42,3 @@ Common choices for the preconditioner include: Jacobi preconditioning, symmetric
 * `ICC`: The incomplete Cholesky factorization preconditioner. 
 
 
-```
-Roxygen: list(roclets = c("rd", "collate"))
-```
