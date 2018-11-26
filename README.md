@@ -1,10 +1,9 @@
 # cPCG: Efficient and Customized Preconditioned Conjugate Gradient Method
 
-An R package to solve system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated C++ linear algebra library, and flexibility for userspecified preconditioning method.
-
+An R package to solve system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated C++ linear algebra library, and flexibility for userspecified preconditioning method.  
 
 # Installation options
-Download `cPCG_1.0.tar.gz` file and build from command line:
+Download `cPCG_1.0.tar.gz` file [here](https://github.com/styvon/cPCG/blob/master/downloads/cPCG_1.0.tar.gz) and build from command line:
 ```
 R CMD INSTALL cPCG_1.0.tar.gz
 ```
@@ -15,6 +14,8 @@ Get current development version from github:
 # install.packages("devtools")
 devtools::install_github("styvon/cPCG")
 ```
+
+**NOTE**: OSX users will need to install `OpenMP` in order to compile the package. Check [here](http://thecoatlessprofessor.com/programming/openmp-in-r-on-os-x/) for a solution.  
 
 # Functions
 
@@ -40,5 +41,12 @@ Common choices for the preconditioner include: Jacobi preconditioning, symmetric
 * `SSOR`: The symmetric successive over-relaxation preconditioner, implemented as M = (D+L) D^{-1} (D+L)^T.  
   
 * `ICC`: The incomplete Cholesky factorization preconditioner. 
+
+
+# Resources
+
+- [User manual](https://github.com/styvon/cPCG/blob/master/docs/manual.pdf)
+- [Vignettes](https://github.com/styvon/cPCG/tree/master/vignettes)
+- [cPCG: Efficient and Customized Preconditioned Conjugate Gradient Method](https://github.com/styvon/cPCG/blob/master/docs/article_cPCG.pdf)
 
 
