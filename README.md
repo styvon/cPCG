@@ -15,7 +15,7 @@ Get current development version from github:
 devtools::install_github("styvon/cPCG")
 ```
 
-**NOTE**: OSX users will need to install `OpenMP` in order to compile the package. Check [here](http://thecoatlessprofessor.com/programming/openmp-in-r-on-os-x/) for a solution.  
+**NOTE**: Mac OSX users will need to install `OpenMP` in order to compile the package. Check [here](http://thecoatlessprofessor.com/programming/openmp-in-r-on-os-x/) for a solution.  
 
 # Functions
 
