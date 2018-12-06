@@ -1,0 +1,61 @@
+---
+title: "cpcg-intro"
+author: "Yongwen Zhuang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{cpcg-intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Functions in this package serve the purpose of solving for $\boldsymbol{x}$ in $\boldsymbol{Ax=b}$, where $\boldsymbol{A}$ is a $n \times n$ symmetric and positive definite matrix, $\boldsymbol{b}$ is a $n \times 1$ column vector. 
+
+To improve scalability of conjugate gradient methods for larger matrices, the C++ Armadillo templated linear algebra library is used for the implementation. The package also provides flexibility to have user-specified preconditioner options to cater for different optimization needs.  
+
+This vignette will walk through some simple examples for using main functions in the package.  
+
+## 1. `cgsolve()`: Conjugate gradient method
+
+The idea of conjugate gradient method is to find a set of mutually conjugate directions for the unconstrained problem  $$\arg \min_x f(x)$$ where $f(x) = 0.5 y^T \Sigma y - yx + z$ and $z$ is a constant. The problem is equivalent to solving $\Sigma x = y$.  
+
+This function implements an iterative procedure to reduce the number of matrix-vector multiplications. The conjugate gradient method improves memory efficiency and computational complexity, especially when $\Sigma$ is relatively sparse.  
+
+**Example**: Solve $Ax = b$ where $A = \begin{bmatrix}
+4 & 1 \\
+1 & 3 
+\end{bmatrix}$, $b = \begin{bmatrix}
+1 \\
+2 
+\end{bmatrix}$.  
+
+```{r, eval=FALSE}
+test_A <- matrix(c(4,1,1,3), ncol = 2)
+test_b <- matrix(1:2, ncol = 1)
+
+cgsolve(test_A, test_b, 1e-6, 1000)
+```
+
+## 2. `pcgsolve()`: Preconditioned conjugate gradient method
+
+When the condition number for $\Sigma$ is large, the conjugate gradient (CG) method may fail to converge in a reasonable number of iterations. The Preconditioned Conjugate Gradient (PCG) Method applies a precondition matrix $C$ and approaches the problem by solving: $$C^{-1} \Sigma x = C^{-1} y$$ where the symmetric and positive-definite matrix $C$ approximates $\Sigma$ and $C^{-1} \Sigma$ improves the condition number of $\Sigma$.  
+
+Choices for the preconditioner include: Jacobi preconditioning (`Jacobi`), symmetric successive over-relaxation (`SSOR`), and incomplete Cholesky factorization (`ICC`).  
+**Example revisited**: Now we solve the same problem using incomplete Cholesky factorization of $A$ as preconditioner.
+
+```{r, eval=FALSE}
+test_A <- matrix(c(4,1,1,3), ncol = 2)
+test_b <- matrix(1:2, ncol = 1)
+
+pcgsolve(test_A, test_b, "ICC")
+```
+
+
+*Check [Github repo](https://github.com/styvon/cPCG/) and [cPCG: Efficient and Customized Preconditioned Conjugate Gradient Method](https://github.com/styvon/cPCG/blob/master/docs/article_cPCG.pdf) for more information.*
