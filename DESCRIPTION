@@ -2,10 +2,10 @@ Package: cPCG
 Type: Package
 Title: Efficient and Customized Preconditioned Conjugate Gradient Method for Solving System of Linear Equations
 Version: 1.0
-Date: 2018-11-23
+Date: 2018-12-30
 Author: Yongwen Zhuang
 Maintainer: Yongwen Zhuang <zyongwen@umich.edu>
-Description: Solves system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated C++ linear algebra library, and flexibility for user-specified preconditioning method. Please check <https://github.com/styvon/cPCG> for latest updates.
+Description: Solves system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated 'C++' linear algebra library, and flexibility for user-specified preconditioning method. Please check <https://github.com/styvon/cPCG> for latest updates.
 Depends: R (>= 3.0.0)
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.19)
