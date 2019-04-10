@@ -48,3 +48,17 @@ pcgsolve <- function(A, b, preconditioner = "Jacobi", tol = 1e-6, maxIter = 1000
     .Call(`_cPCG_pcgsolve`, A, b, preconditioner, tol, maxIter)
 }
 
+#' Calculation of sparse matrix inverse and vector product using conjugate gradient descent
+#'
+#' This Rcpp function utilizes OpenMP and calculates inverse of a sparse matrix and product with a vector 
+#' @param A          A (n x n) matrix.
+#' @param b          A n-vector.
+#' @param tol        Tolerance for conjugate gradient algorithm.
+#' @param maxIter    Max number of iterations for conjugate gradient algorithm.
+#' @param nThreads   Number of threads for OMP.
+#' @param nSubThreads   Number of threads for OMP nested tasks.
+#' @return      A n-vector of A_inv b
+cgsolve_sparseOMP <- function(A, b, tol = 1e-6, maxIter = 1000L, nThreads = 1L, nSubThreads = 1L) {
+    .Call(`_cPCG_cgsolve_sparseOMP`, A, b, tol, maxIter, nThreads, nSubThreads)
+}
+
