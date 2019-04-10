@@ -3,9 +3,9 @@
 An R package to solve system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated C++ linear algebra library, and flexibility for userspecified preconditioning method.  
 
 # Installation options
-Download `cPCG_1.0.tar.gz` file [here](https://github.com/styvon/cPCG/blob/master/downloads/cPCG_1.0.tar.gz) and build from command line:
+Download `cPCG_1.5.0.tar.gz` file [here](https://github.com/styvon/cPCG/blob/master/downloads/cPCG_1.5.0.tar.gz) and build from command line:
 ```
-R CMD INSTALL cPCG_1.0.tar.gz
+R CMD INSTALL cPCG_1.5.0.tar.gz
 ```
 
 Get current development version from github:
