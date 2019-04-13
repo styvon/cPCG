@@ -3,9 +3,9 @@
 An R package to solve system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated C++ linear algebra library, and flexibility for userspecified preconditioning method.  
 
 # Installation options
-Download `cPCG_1.5.0.tar.gz` file [here](https://github.com/styvon/cPCG/blob/master/downloads/cPCG_1.5.0.tar.gz) and build from command line:
+Download `cPCG_1.5.5.tar.gz` file [here](https://github.com/styvon/cPCG/blob/master/downloads/cPCG_1.5.5.tar.gz) and build from command line:
 ```
-R CMD INSTALL cPCG_1.5.0.tar.gz
+R CMD INSTALL cPCG_1.5.5.tar.gz
 ```
 
 Get current development version from github:
@@ -42,6 +42,22 @@ Common choices for the preconditioner include: Jacobi preconditioning, symmetric
   
 * `ICC`: The incomplete Cholesky factorization preconditioner. 
 
+## `cgsolve_sparseOMP`
+Sparse matrix with parallelism using OpenMP for conjugate gradient method.  
+
+
+```
+# A is a sparse matrix, can be generated using 'Matrix' package function Matrix(..., sparse = TRUE)
+cgsolve_sparseOMP(A, b, tol = 1e-6, maxIter = 1000, nThreads=1)
+```
+
+## `pcgsolve_sparseOMP`
+Sparse matrix with parallelism using OpenMP for preconditioned conjugate gradient method, Jacobi preconditioner is currently available.  
+
+```
+# A is a sparse matrix, can be generated using 'Matrix' package function Matrix(..., sparse = TRUE)
+pcgsolve_sparseOMP(A, b, preconditioner = "Jacobi", tol = 1e-6, maxIter = 1000, nThreads=1)
+```
 
 # Resources
 
