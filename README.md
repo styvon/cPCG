@@ -1,6 +1,6 @@
 # cPCG: Efficient and Customized Preconditioned Conjugate Gradient Method
 
-An R package to solve system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated C++ linear algebra library, and flexibility for userspecified preconditioning method.  
+An [R package](https://cran.r-project.org/web/packages/cPCG/) to solve system of linear equations using (preconditioned) conjugate gradient algorithm, with improved efficiency using Armadillo templated C++ linear algebra library, and flexibility for userspecified preconditioning method.  
 
 # Installation options
 Download `cPCG_1.5.5.tar.gz` file [here](https://github.com/styvon/cPCG/blob/master/downloads/cPCG_1.5.5.tar.gz) and build from command line:
@@ -63,6 +63,6 @@ pcgsolve_sparseOMP(A, b, preconditioner = "Jacobi", tol = 1e-6, maxIter = 1000, 
 
 - [User manual](https://github.com/styvon/cPCG/blob/master/docs/manual.pdf)
 - [Vignettes](https://github.com/styvon/cPCG/tree/master/vignettes)
-- [cPCG: Efficient and Customized Preconditioned Conjugate Gradient Method](https://github.com/styvon/cPCG/blob/master/docs/article_cPCG.pdf)
+- [cPCG: Efficient and Customized Preconditioned Conjugate Gradient Method](https://cran.r-project.org/web/packages/cPCG/cPCG.pdf)
 
 
