@@ -47,8 +47,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // cgsolve_sparseOMP
-arma::vec cgsolve_sparseOMP(const arma::sp_mat& A, const arma::vec& b, float tol, int maxIter, int nThreads, int nSubThreads);
-RcppExport SEXP _cPCG_cgsolve_sparseOMP(SEXP ASEXP, SEXP bSEXP, SEXP tolSEXP, SEXP maxIterSEXP, SEXP nThreadsSEXP, SEXP nSubThreadsSEXP) {
+arma::vec cgsolve_sparseOMP(const arma::sp_mat& A, const arma::vec& b, float tol, int maxIter, int nThreads);
+RcppExport SEXP _cPCG_cgsolve_sparseOMP(SEXP ASEXP, SEXP bSEXP, SEXP tolSEXP, SEXP maxIterSEXP, SEXP nThreadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -57,8 +57,23 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< float >::type tol(tolSEXP);
     Rcpp::traits::input_parameter< int >::type maxIter(maxIterSEXP);
     Rcpp::traits::input_parameter< int >::type nThreads(nThreadsSEXP);
-    Rcpp::traits::input_parameter< int >::type nSubThreads(nSubThreadsSEXP);
-    rcpp_result_gen = Rcpp::wrap(cgsolve_sparseOMP(A, b, tol, maxIter, nThreads, nSubThreads));
+    rcpp_result_gen = Rcpp::wrap(cgsolve_sparseOMP(A, b, tol, maxIter, nThreads));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pcgsolve_sparseOMP
+arma::vec pcgsolve_sparseOMP(const arma::sp_mat& A, arma::vec b, std::string preconditioner, float tol, int maxIter, int nThreads);
+RcppExport SEXP _cPCG_pcgsolve_sparseOMP(SEXP ASEXP, SEXP bSEXP, SEXP preconditionerSEXP, SEXP tolSEXP, SEXP maxIterSEXP, SEXP nThreadsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::sp_mat& >::type A(ASEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type b(bSEXP);
+    Rcpp::traits::input_parameter< std::string >::type preconditioner(preconditionerSEXP);
+    Rcpp::traits::input_parameter< float >::type tol(tolSEXP);
+    Rcpp::traits::input_parameter< int >::type maxIter(maxIterSEXP);
+    Rcpp::traits::input_parameter< int >::type nThreads(nThreadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(pcgsolve_sparseOMP(A, b, preconditioner, tol, maxIter, nThreads));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -67,7 +82,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cPCG_icc", (DL_FUNC) &_cPCG_icc, 1},
     {"_cPCG_cgsolve", (DL_FUNC) &_cPCG_cgsolve, 4},
     {"_cPCG_pcgsolve", (DL_FUNC) &_cPCG_pcgsolve, 5},
-    {"_cPCG_cgsolve_sparseOMP", (DL_FUNC) &_cPCG_cgsolve_sparseOMP, 6},
+    {"_cPCG_cgsolve_sparseOMP", (DL_FUNC) &_cPCG_cgsolve_sparseOMP, 5},
+    {"_cPCG_pcgsolve_sparseOMP", (DL_FUNC) &_cPCG_pcgsolve_sparseOMP, 6},
     {NULL, NULL, 0}
 };
 

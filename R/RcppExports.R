@@ -56,9 +56,31 @@ pcgsolve <- function(A, b, preconditioner = "Jacobi", tol = 1e-6, maxIter = 1000
 #' @param tol        Tolerance for conjugate gradient algorithm.
 #' @param maxIter    Max number of iterations for conjugate gradient algorithm.
 #' @param nThreads   Number of threads for OMP.
-#' @param nSubThreads   Number of threads for OMP nested tasks.
 #' @return      A n-vector of A_inv b
-cgsolve_sparseOMP <- function(A, b, tol = 1e-6, maxIter = 1000L, nThreads = 1L, nSubThreads = 1L) {
-    .Call(`_cPCG_cgsolve_sparseOMP`, A, b, tol, maxIter, nThreads, nSubThreads)
+cgsolve_sparseOMP <- function(A, b, tol = 1e-6, maxIter = 1000L, nThreads = 1L) {
+    .Call(`_cPCG_cgsolve_sparseOMP`, A, b, tol, maxIter, nThreads)
+}
+
+#' Preconditioned conjugate gradient method
+#'
+#' Preconditioned conjugate gradient method for solving system of linear equations Ax = b,
+#' where A is symmetric and positive definite.
+#'
+#' @title Solve for x in Ax = b using preconditioned conjugate gradient method.
+#' @param A matrix, symmetric and positive definite.
+#' @param b vector, with same dimension as number of rows of A.
+#' @param preconditioner string, method for preconditioning: \code{"Jacobi"} (default), \code{"SSOR"}, or \code{"ICC"}.
+#' @param tol numeric, threshold for convergence, default is \code{1e-6}.
+#' @param maxIter numeric, maximum iteration, default is \code{1000}.
+#' @param nThreads   Number of threads for OMP.
+#' @return A vector representing solution x.
+#' @examples
+#' \dontrun{
+#' test_A <- matrix(c(4,1,1,3), ncol = 2)
+#' test_b <- matrix(1:2, ncol = 1)
+#' pcgsolve_sparseOMP(test_A, test_b, "ICC",nThreads=2)
+#' }
+pcgsolve_sparseOMP <- function(A, b, preconditioner = "Jacobi", tol = 1e-6, maxIter = 1000L, nThreads = 1L) {
+    .Call(`_cPCG_pcgsolve_sparseOMP`, A, b, preconditioner, tol, maxIter, nThreads)
 }
 

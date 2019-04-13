@@ -4,8 +4,7 @@
 \alias{cgsolve_sparseOMP}
 \title{Calculation of sparse matrix inverse and vector product using conjugate gradient descent}
 \usage{
-cgsolve_sparseOMP(A, b, tol = 1e-06, maxIter = 1000L, nThreads = 1L,
-  nSubThreads = 1L)
+cgsolve_sparseOMP(A, b, tol = 1e-06, maxIter = 1000L, nThreads = 1L)
 }
 \arguments{
 \item{A}{A (n x n) matrix.}
@@ -17,8 +16,6 @@ cgsolve_sparseOMP(A, b, tol = 1e-06, maxIter = 1000L, nThreads = 1L,
 \item{maxIter}{Max number of iterations for conjugate gradient algorithm.}
 
 \item{nThreads}{Number of threads for OMP.}
-
-\item{nSubThreads}{Number of threads for OMP nested tasks.}
 }
 \value{
 A n-vector of A_inv b
