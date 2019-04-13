@@ -42,7 +42,7 @@ Common choices for the preconditioner include: Jacobi preconditioning, symmetric
   
 * `ICC`: The incomplete Cholesky factorization preconditioner. 
 
-## `cgsolve_sparseOMP`
+## `cgsolve_sparseOMP`  *new in v1.5.5*
 Sparse matrix with parallelism using OpenMP for conjugate gradient method.  
 
 
@@ -51,7 +51,7 @@ Sparse matrix with parallelism using OpenMP for conjugate gradient method.
 cgsolve_sparseOMP(A, b, tol = 1e-6, maxIter = 1000, nThreads=1)
 ```
 
-## `pcgsolve_sparseOMP`
+## `pcgsolve_sparseOMP` *new in v1.5.5*
 Sparse matrix with parallelism using OpenMP for preconditioned conjugate gradient method, Jacobi preconditioner is currently available.  
 
 ```
