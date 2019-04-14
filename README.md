@@ -11,8 +11,7 @@ R CMD INSTALL cPCG_1.5.5.tar.gz
 Get current development version from github:
 
 ```R
-# install.packages("devtools")
-devtools::install_github("styvon/cPCG")
+install.packages("cPCG_1.5.5.tar.gz")
 ```
 
 **NOTE**: Mac OSX users will need to install `OpenMP` in order to compile the package. Check [here](http://thecoatlessprofessor.com/programming/openmp-in-r-on-os-x/) for a solution.  
